@@ -1,0 +1,15 @@
+{
+  "name": "learnyounode",
+  "version": "1.0.0",
+  "description": "simple node app",
+  "main": "http-collect.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/rustyautoparts/potential-shame/"
+  },
+  "author": "Russ Otto",
+  "license": "ISC"
+}
