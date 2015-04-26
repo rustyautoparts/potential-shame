@@ -1,4 +1,4 @@
-var filterExt = require('./filter.js');
+var filterExt = require('./filter-module.js');
 
 var dirname = process.argv[2];
 var ext = process.argv[3];
