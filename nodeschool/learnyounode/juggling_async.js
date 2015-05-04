@@ -1,18 +1,31 @@
 var http = require('http');
 var bl = require('bl');
 
-var url = [process.argv[2], process.argv[3], process.argv[4]];
-var result = ['', '', ''];
-for (var i = 0; i < url.length; i++) {
-	http.get(url[i], function(res) {
-		res.pipe(bl(function (err, data) {
-			if (err)
+var urls = process.argv.slice(2, process.argv.length);
+var result = [];
+var count = 0;
+
+function printResult() {
+	for (i in result) {
+		console.log(result[i]);
+	}
+}
+function httpGet(index) {
+	http.get(urls[i], function(res) {
+		res.pipe(bl(function(err, data) {
+			if (err) {
 				return console.error(err);
-			data = data.toString();
-			result = result.splice(i, 1, data);
+			}
+			result[index] = data.toString();
+			count++;
+
+			if (count === urls.length) {
+				printResult();
+			}
 		}));
 	});
 }
-for (var i = 0; i < result.length; i++) {
-	console.log(result[i]);
+
+for (var i = 0; i < 3; i++) {
+	httpGet(i);
 }
