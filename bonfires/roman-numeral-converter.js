@@ -40,16 +40,6 @@ function convert(num) {
 	return romNum.join('');
 }
 
-convert(0);
-convert(1);
-convert(2);
-convert(3);
-convert(4);
-convert(5);
-convert(6);
-convert(7);
-convert(8);
-convert(9);
 convert(36);
 // >> XXXVI
 convert(12);
@@ -63,4 +53,6 @@ convert(29);
 convert(16);
 // >> XVI
 convert(492);
+// >> CDXCII
 convert(1986);
+// >> MCMLXVI
