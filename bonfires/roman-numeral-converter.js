@@ -4,37 +4,52 @@
 // All roman numerals answers should be provided in upper-case
 
 function convert(num) {
-	var digitArr = num.toString().split('');
-	var roman = [];
-	var digit = 0;
-	var numeral1 = '';
-	var numeral5 = '';
-	for (var i = digitArr.length - 1; i >= 0; i--) {
-		if (digit === 0) {
-			numeral1 = 'I';
-			numeral5 = 'V';
-		} else if (digit === 1) {
-			numeral1 = 'X';
-			numeral5 = 'L';
-		} else if (digit === 2) {
-			numeral1 = 'C';
-			numeral5 = 'D';
-		} else if (digit === 3) {
-			numeral1 = 'M';
+	var arr = num.toString().split('').map(function(val) {
+		return parseInt(val, 10);
+	});
+	var numerals = ['I', 'V', 'X', 'L', 'C', 'D', 'M'];
+	var oneVal = 0;
+	var fiveVal = 1;
+	var romNum = [];
+	for (var i = arr.length - 1; i >= 0; i--) {
+		romNum.splice(0, 0, romanDigit(arr[i]));
+	}
+	function romanDigit(digit) {
+		var roman = [];
+		if (digit <= 3) {
+			addOne(digit);
+		} else if (digit === 4) {
+			roman.push(numerals[oneVal], numerals[fiveVal]);
+		} else if (digit < 9) {
+			digit = num % 5;
+			roman.push(numerals[fiveVal]);
+			addOne(digit);
 		} else {
-			console.log('Something went wrong')
-			return error;
+			roman.push(numerals[oneVal], numerals[oneVal + 2]);
 		}
-		for (var j = 0; j < digitArr[i]; j++) {
-			if (digitArr[i] <= 3) {
-				roman.splice(0, 0, numeral1);
+		roman = roman.join('').toString();
+		function addOne(val) {
+			for (var j = val; j > 0; j--) {
+				roman.push(numerals[oneVal]);
 			}
 		}
-		digit++;
+		oneVal += 2;
+		fiveVal += 2;
+		return roman;
 	}
-	console.log(roman.join(''));
+	return romNum.join('');
 }
 
+convert(0);
+convert(1);
+convert(2);
+convert(3);
+convert(4);
+convert(5);
+convert(6);
+convert(7);
+convert(8);
+convert(9);
 convert(36);
 // >> XXXVI
 convert(12);
@@ -47,3 +62,5 @@ convert(29);
 // >> XXIX
 convert(16);
 // >> XVI
+convert(492);
+convert(1986);
