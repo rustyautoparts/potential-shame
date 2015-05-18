@@ -6,21 +6,51 @@
 // Otherwise, return change in coin and bills, sorted in highest to lowest order.
 
 function drawer(price, cash, cid) {
+	//Avoids floating point inaccuracies by converting to cents
+	price = convert100(price);
+	cash = convert100(cash);
+	cid = cid.map(function(val) {
+		return [val[0], convert100(val[1])];
+	});
+	var denom = [1, 5, 10, 25, 100, 500, 1000, 2000, 10000];
 	var change = cash - price;
-	var cidTotal = 0;
-	for (var i = 0; i < cid.length; i++) {
-		console.log(parseFloat(cid[i][1]));
-		cidTotal += parseFloat(cid[i][1]);
-		console.log(cidTotal);
-	}
+	//Calculates total cash in drawer
+	var cidTotal = cid.reduce(function(a, b) {
+		return a + b[1];
+	}, 0);
 	if (change > cidTotal) {
-		return "Insufficient Funds"
+		return "Insufficient Funds";
 	} else if (change === cidTotal) {
-		return "Closed"
+		return "Closed";
 	} else {
-		return change;
+		var returned = [];
+		for (var i = cid.length - 1; i >= 0; i--) {
+			if (denom[i] < change) {
+				console.log('Change is payable from ' + cid[i][0]);
+				var thisDenom = [cid[i][0], 0];
+				while (change - denom[i] >= 0 && cid[i][1] > 0) {
+					console.log('Change: ' + change)
+					console.log('Cash: ' + cid[i][1]);
+					cid[i][1] -= denom[i];
+					change -= denom[i];
+					thisDenom[1] += denom[i];
+				}
+				console.log('final change: ' + change);
+				thisDenom[1] = convertToDec(thisDenom[1]);
+				returned.push(thisDenom);
+			}
+		}
+		return returned;
 	}
-	console.log(cidTotal);
+}
+function convert100(total) {
+	var total100 = total * 100;
+	return Math.round(total100);
+}
+function convertToDec(total) {
+	var totalDec = total / 100;
+	//return totalDec.toPrecision(2);
+	return totalDec;
 }
 
-console.log(drawer(19.50, 20.00, [['PENNY', 1.01], ['NICKEL', 2.05], ['DIME', 3.10], ['QUARTER', 4.25], ['ONE', 90.00], ['FIVE', 55.00], ['TEN', 20.00], ['TWENTY', 60.00], ['ONE HUNDRED', 100.00]]));
+console.log(drawer(3.26, 100.00, [['PENNY', 1.01], ['NICKEL', 2.05], ['DIME', 3.10], ['QUARTER', 4.25], ['ONE', 90.00], ['FIVE', 55.00], ['TEN', 20.00], ['TWENTY', 60.00], ['ONE HUNDRED', 100.00]]));
