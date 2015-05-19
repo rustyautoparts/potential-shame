@@ -5,16 +5,15 @@
 function inventory(arr1, arr2) {
 	var updated = updateExist(arr1, arr2);
 	var newItems = nonExistIn(arr1, arr2);
-	console.log(newItems);
 	newItems.forEach(function(val) {
 		updated = addNew(updated, val);
-		console.log(updated);
 	});
 	function updateExist(oldInv, newInv) {
 		var updatedItems = oldInv.map(function(oldItem) {
 			var updateIdx = existsIn(newInv, oldItem);
 			if (updateIdx >= 0) {
-				return newInv[updateIdx];
+				var stock = newInv[updateIdx][0] + oldItem[0];
+				return [stock, oldItem[1]];
 			} else {
 			       return oldItem;
 			}	       
