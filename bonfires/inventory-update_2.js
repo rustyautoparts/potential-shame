@@ -6,13 +6,20 @@ function inventory(arr1, arr2) {
 	var firstInv = arr1;
 	var secondInv = arr2;
 
-	arr1.forEach(function(val) {
-		var updateIdx;
-		var update = secondInv.some(function(secVal, secIdx) {
-			updateIdx = secIdx;
-			return secVal[1] === val[1];
+	arr1.forEach(function(curVal) {
+		console.log('Currently examing: ' + curVal);
+		arr2.some(function(newVal) {
+			if (curVal[1] < newVal[1]) {
+				//insert newVal after curVal
+				console.log(curVal[1] + ' should come before ' + newVal[1]);
+				return false
+			} else if (curVal[1] === newVal[1]) {
+				//add newVal quantity to curVal quantity
+				console.log(curVal[1] + ' needs to add ' + newVal[0] + ' more');
+				return true
+			}
 		});
-
+		var updateIdx;
 	});
 }
 
