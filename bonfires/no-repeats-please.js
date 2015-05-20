@@ -5,13 +5,22 @@
 
 function permAlone(str) {
 	var array = str.split('');
-	array.forEach(function(val) {
-		var options = array.slice(0);
-		options.splice(options.indexOf(val), 1);
-		console.log(options);
+	var result = [];
+	function perm(arr, opts) {
+		var holder = [];
+		for(var i = 0; i < arr.length; i++) {
+			holder.concat(arr.splice(i, 1));
+		}
+		return holder;
+	}
+	return perm(array);
+}
+function notSame(letter1, letter2) {
+	if (letter1 === letter2) {
+		return false;
+	}
+	return true;
 
-	});
-	return str;
 }
 
-permAlone('aab');
+console.log(permAlone('aab'));
