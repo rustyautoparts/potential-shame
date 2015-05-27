@@ -17,7 +17,7 @@ function add() {
 		}
 	} else if (typeof arg1 == 'number') {
 		return function (x) {
-		       	return add(x, arg1);
+			return add(x, arg1);
 		};
 	} else {
 		return undefined;
