@@ -1,16 +1,14 @@
 var wordCount = function(str) {
   var arr = str.split(/\s+/);
-  var input = {};
-  console.log(arr);
+  var obj = {};
   arr.forEach(function(val) {
-    if (!input[val]) {
-      input[val] = 1;
+    if (typeof obj[val] !== 'number') {
+      obj[val] = 1;
     } else {
-      input[val] += 1;
+      obj[val] += 1;
     }
   });
-  console.log(input);
-  return input;
+  return obj;
 };
 
 module.exports = wordCount;
