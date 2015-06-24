@@ -4,38 +4,25 @@
 // For example, 'aab' should return 2 because it has 6 total permutations, but only 2 of them don't have the same letter (in this case 'a') repeating.
 
 function permAlone(str) {
-  var word = str.split('');
   var count = 0;
-  var iteration = 0;
-  permutate(word);
-  function permutate(remain, used) {
-    if (!used) 
-      used = [];
-    if (used.length > 0 && remain.length === 0) {
-      count++;
-    } else {
-      var remaining = remain.map(function(letter) {
-        return letter;
-      });
-      var done = used.map(function(letter) {
-        return letter;
-      });
-      remain.forEach(function(letter, order) {
-        iteration++;
-        console.log(iteration + ":: ");
-        console.log("Current letter: " + letter)
-        console.log("Count: " + count);
-        console.log("Used: " + done.join(''));
-        console.log("Remaining: " + remaining.join(''));
-        console.log("Index: " + order);
-        done.push(remaining.splice(order, 1));
-        console.log("Result: " + done.join(''));
-        console.log("------");
-        permutate(remaining, done);
-      });
+  if (str.length < 1) {
+    return count;
+  } else {
+    permCounter(str, []);
+    return count;
+  }
+  function permCounter(remain, used) {
+    if (typeof remain == 'string') remain = remain.split('');
+    if (remain.length == 0) count++;
+    for (var i = 0; i < remain.length; i++) {
+      var letter = remain.splice(i, 1);
+      used.push(letter);
+      permCounter(remain, used);
+      used.pop();
+      remain.splice(i, 0, letter);
     }
   }
-  return count;
 }
 
-permAlone('ab');
+console.log(permAlone('aab'));
+console.log(permAlone(''));
