@@ -5,24 +5,25 @@
 
 function permAlone(str) {
   var count = 0;
-  if (str.length < 1) {
-    return count;
-  } else {
+  if (str.length >= 1) {
     permCounter(str, []);
-    return count;
   }
+  return count;
+  
   function permCounter(remain, used) {
     if (typeof remain == 'string') remain = remain.split('');
     if (remain.length == 0) count++;
     for (var i = 0; i < remain.length; i++) {
-      var letter = remain.splice(i, 1);
-      used.push(letter);
-      permCounter(remain, used);
-      used.pop();
+      var letter = remain.splice(i, 1).toString();
+      if (used.lastIndexOf(letter) !== used.length - 1 ||
+          used.length === 0) {
+        used.push(letter);
+        permCounter(remain, used);
+        used.pop();
+      }
       remain.splice(i, 0, letter);
     }
   }
 }
 
 console.log(permAlone('aab'));
-console.log(permAlone(''));
