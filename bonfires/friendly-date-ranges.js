@@ -9,13 +9,20 @@ function friendly(range) {
   var dates = range.map(function(date) {
     date = date.split('-');
     return {
-      'year': date[0],
+      'year': parseInt(date[0]),
       'month': parseMonth(date[1]),
       'day': parseDay(date[2])
     }
   });
-  var startDate = dates[0];
-  var endDate = dates[1];
+  var today = new Date();
+  
+  if (today.getFullYear() === startDate.year) {
+    console.log('same year');
+  }
+
+  return dates.map(function(date) {
+    return date.month + ' ' + date.day + ' ' + date.year;
+  });
 
   function parseMonth(month) {
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -36,9 +43,6 @@ function friendly(range) {
       return day + 'th';
     }
   }
-  return dates.map(function(date) {
-    return date.month + ' ' + date.day + ' ' + date.year;
-  });
 }
 
 console.log(friendly(['2015-07-01', '2015-07-04']));
