@@ -6,34 +6,40 @@
 // Input date is formatted as YYYY-MM-DD
 
 function friendly(range) {
-  var dates = range.map(function(date) {
-    date = date.split('-');
-    return {
-      'year': parseInt(date[0]),
-      'month': parseMonth(date[1]),
-      'day': parseDay(date[2])
-    }
-  });
   var today = new Date();
-  
-  if (today.getFullYear() === startDate.year) {
-    console.log('same year');
-  }
-
-  return dates.map(function(date) {
-    return date.month + ' ' + date.day + ' ' + date.year;
+  var thisYear = today.getFullYear();
+  return range.
+    map(function(date) {
+      date = date.split('-');
+      return {
+        'year': parseInt(date[0]),
+        'month': parseInt(date[1]),
+        'day': parseInt(date[2])
+      }
+    }).
+    reduce(function(start, end) {
+    var startDate = [parseMonth(start.month), parseDay(start.day)]
+    var endDate = [];
+    if (start.year !== thisYear) {
+      startDate.push(start.year);
+    }
+    if (end.month !== start.month) {
+      endDate.push(end.month);
+    }
+    if (end.day !== start.day) {
+      endDate.push(parseDay(end.day));
+    }
+    return [startDate.join(' '), endDate.join(' ')];
   });
-
+  
   function parseMonth(month) {
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    return months[parseInt(month[1]) - 1];
+    return months[parseInt(month) - 1];
   }
 
   function parseDay(day) {
     day = parseInt(day);
-    if (day === 1 ||
-        day === 21 ||
-        day === 31) {
+    if (day === 1 || day === 21 || day === 31) {
       return day + 'st';
     } else if (day === 2 || day === 22) {
       return day + 'nd';
@@ -46,3 +52,4 @@ function friendly(range) {
 }
 
 console.log(friendly(['2015-07-01', '2015-07-04']));
+console.log(friendly(['2015-07-01', '2017-07-04']));
