@@ -17,25 +17,34 @@ function friendly(range) {
     }
   })
   .reduce(function(start, end) {
+    var friendlyRange = [
+      [start.month, start.day, start.year],
+      [end.month, end.day, end.year]
+    ];
     if (start.year == end.year) {
-      delete start.year;
+      friendlyRange[0].pop();
       if (thisYear == start.year) {
-        delete end.year;
+        friendlyRange[1].pop();
       }
       if (start.month == end.month) {
-        delete end.month;
+        friendlyRange[1].shift();
         if (start.day == end.day) {
-          delete end.day;
+          friendlyRange[1].shift();
         }
       }
     } else if (thisYear == start.year &&
         start.month == 'December' &&
         start.year == end.year + 1) {
       // remove start year
-      delete start.year;
-      delete end.year;
+      friendlyRange[0].pop();
+      friendlyRange[1].pop();
     }
-    return [start, end];
+    return friendlyRange.map(function(date) {
+      if (date.length === 3) {
+        date[1] += ',';
+      }
+      return date.join(' ');
+    });
   });
 
   function parseMonth(month) {
