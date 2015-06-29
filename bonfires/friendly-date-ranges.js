@@ -14,7 +14,7 @@ function friendly(range) {
       'year': date[0],
       'month': parseMonth(date[1]),
       'day': parseDay(date[2])
-    }
+    };
   })
   .reduce(function(start, end) {
     var friendlyRange = [
@@ -25,17 +25,20 @@ function friendly(range) {
       friendlyRange[0].pop();
       if (thisYear == start.year) {
         friendlyRange[1].pop();
-      }
+      } 
       if (start.month == end.month) {
         friendlyRange[1].shift();
         if (start.day == end.day) {
           friendlyRange[1].shift();
+          if (start.year == end.year) {
+            friendlyRange[0].push(friendlyRange[1].pop());
+            friendlyRange.splice(1,1);
+          }
         }
       }
     } else if (thisYear == start.year &&
         start.month == 'December' &&
-        start.year == end.year + 1) {
-      // remove start year
+        start.year == end.year - 1) {
       friendlyRange[0].pop();
       friendlyRange[1].pop();
     }
@@ -79,5 +82,4 @@ function friendly(range) {
   }
 }
 
-console.log(friendly(['2015-07-01', '2015-07-04']));
-console.log(friendly(['2015-07-01', '2017-07-04']));
+friendly(['2017-01-01', '2017-01-01']);
