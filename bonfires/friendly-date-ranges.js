@@ -8,32 +8,51 @@
 function friendly(range) {
   var today = new Date();
   var thisYear = today.getFullYear();
-  return range.
-    map(function(date) {
-      date = date.split('-');
-      return {
-        'year': parseInt(date[0]),
-        'month': parseInt(date[1]),
-        'day': parseInt(date[2])
+  return range.map(function(date) {
+    date = date.split('-');
+    return {
+      'year': date[0],
+      'month': parseMonth(date[1]),
+      'day': parseDay(date[2])
+    }
+  })
+  .reduce(function(start, end) {
+    if (start.year == end.year) {
+      delete start.year;
+      if (thisYear == start.year) {
+        delete end.year;
       }
-    }).
-    reduce(function(start, end) {
-    var startDate = [parseMonth(start.month), parseDay(start.day)]
-    var endDate = [];
-    if (start.year !== thisYear) {
-      startDate.push(start.year);
+      if (start.month == end.month) {
+        delete end.month;
+        if (start.day == end.day) {
+          delete end.day;
+        }
+      }
+    } else if (thisYear == start.year &&
+        start.month == 'December' &&
+        start.year == end.year + 1) {
+      // remove start year
+      delete start.year;
+      delete end.year;
     }
-    if (end.month !== start.month) {
-      endDate.push(end.month);
-    }
-    if (end.day !== start.day) {
-      endDate.push(parseDay(end.day));
-    }
-    return [startDate.join(' '), endDate.join(' ')];
+    return [start, end];
   });
-  
+
   function parseMonth(month) {
-    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ];
     return months[parseInt(month) - 1];
   }
 
