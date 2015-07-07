@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>Twitch Checker</title>
     <link href="/style.css" rel="stylesheet">
   </head>
   <body>
     <script src="../bower_components/jquery/dist/jquery.min.js" type="javascript"></script>
+    <script src="/twitch.ajax.js" type="javascript"></script>
+    <script id="status-template" type="jquery-template">
+      <li id="" class="channel">
+        <div class="avatar">
+          <img>
+        </div>
+        <h3 class="name"></h3>
+        <p class="status"></p>
+      </li>
+    </script>
   </body>
 </html>
