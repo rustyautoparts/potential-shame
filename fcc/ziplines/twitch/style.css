@@ -1,3 +1,13 @@
 body {
   background-color: gray;
 }
+
+header {
+  width: 400px;
+  margin: 0 auto;
+  background: #ffcc44;
+}
+
+h1 {
+  text-align: center;
+}

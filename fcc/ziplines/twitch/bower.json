@@ -1,12 +1,12 @@
 {
-  "name": "ziplines",
+  "name": "Twitchecker",
   "version": "0.0.1",
   "homepage": "https://github.com/rustyautoparts/potential-shame",
   "authors": [
     "Russ <unplugged68@gmail.com>"
   ],
-  "description": "A collection of front-end exercises from FreeCodeCamp.com",
-  "main": "index.template.html",
+  "description": "A front-end excercise from Free Code Camp, utilizing the Twitch API.",
+  "main": "index.html",
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -14,5 +14,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  },
+  "private": "true"
 }
