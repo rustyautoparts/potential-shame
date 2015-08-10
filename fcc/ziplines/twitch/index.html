@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Twitch Checker</title>
     <link href="style.css" rel="stylesheet">
   </head>
@@ -8,8 +9,10 @@
     <header>
       <h1>Twitchecker</h1>
     </header>
-    <script src="bower_components/jquery/dist/jquery.min.js" type="javascript"></script>
-    <script src="twitch.ajax.js" type="javascript"></script>
+    <ul id="streams">
+    </ul>
+    <script src="./bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="./twitch.js" type="text/javascript"></script>
     <script id="status-template" type="jquery-template">
       <li id="" class="channel">
         <div class="avatar">
