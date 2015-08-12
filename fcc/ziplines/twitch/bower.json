@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "jquery": "~2.1.4"
+    "jquery-template": "~1.4.5"
   },
   "private": "true"
 }

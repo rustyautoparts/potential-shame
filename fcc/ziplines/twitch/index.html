@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Twitch Checker</title>
+    <link href="http://fonts.googleapis.com/css?family=Oxygen:400,700,300" rel="stylesheet" type="text/css">
     <link href="style.css" rel="stylesheet">
   </head>
   <body>
@@ -14,14 +15,15 @@
       </ul>
     </div>
     <script src="./bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="./bower_components/jquery-template/jquery-loadTemplate/jquery.loadTemplate-1.4.5.js" type="text/javascript"></script>
     <script src="./twitch.js" type="text/javascript"></script>
-    <script id="status-template" type="jquery-template">
-      <li id="" class="channel">
+    <script id="template" type="jquery-template">
+      <li data-id="stream" class="channel">
         <div class="avatar">
           <img>
         </div>
         <h3 class="name"></h3>
-        <p class="status"></p>
+        <p class="status" data-content="desc"></p>
       </li>
     </script>
   </body>

@@ -1,5 +1,6 @@
 body {
   background-color: gray;
+  font-family: 'Oxygen', sans-serif;
 }
 
 header {
@@ -24,6 +25,11 @@ header > h1 {
 
 .stream {
   height: 75px;
+}
+
+.stream a {
+  border: 1px solid red;
+  display: block;
 }
 
 .stream h3 {
