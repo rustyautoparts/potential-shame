@@ -196,7 +196,7 @@ var quotes = [
   },
   {
     "quote": "Asking for efficiency and adaptability in the same program is like asking for a beautiful and modest wife. Although beauty and modesty have been known to occur in the same woman, we'll probably have to settle for one or the other. At least that's better than nzeither.",
-    "author": "Gerald M. Weinberg,",
+    "author": "Gerald M. Weinberg",
     "source": "<em>The Psychology of Computer Programming</em>"
   },
   {

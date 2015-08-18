@@ -3,9 +3,28 @@
   <head>
     <meta charset='utf8'>
     <title>Random Quote Generator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
     <h1>Programming Quotes</h1>
+    <blockquote class="loading">
+      <p id="quote">
+      </p>
+      <cite>
+        <footer>
+          <span id="author"></span><br>
+          <span id="source" class="hidden"></span>
+        </footer>
+      </cite>
+    </blockquote>
+    <button id="new-quote">New Quote</button>
+    <table id="jslicense-labels1" class="hidden">
+      <tr>
+        <td><a href="bower_components/jquery/dist/jquery.min.js">jquery.min.js</a></td>
+        <td><a href="http://www.jclark.com/xml/copyting.txt">Expat</a></td>
+        <td><a href="bower_components/jquery/dist/jquery.js">jquery.js</a></td>
+      </tr>
+    </table>
     <script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
     <script src="quotes-list.js" type="text/javascript"></script>
     <script src="quote-gen.js" type="text/javascript"></script>
