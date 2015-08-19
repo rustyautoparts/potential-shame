@@ -1,3 +1,6 @@
+blockquote {
+  margin: 0;
+}
 button {
   background-color: #ffffff;
   border: 3px solid #000000;
@@ -6,6 +9,38 @@ button {
 }
 cite {
   font-style: normal;
+}
+h1 {
+  background-color: orange;
+  color: #000000;
+  font-weight: 700;
+  margin: 0px;
+  padding: 2px;
+}
+#buttons {
+  background-color: #f5f5dc;
+  border: medium none #f5f5dc;
+  border-radius: 10px;
+  color: #000000;
+  height: 76px;
+  margin-top: 5px;
+  width: 100%;
+}
+#computer {
+  background-color: #000000;
+  border: 20px solid #f5f5dc;
+  border-radius: 5px;
+  color: orange;
+  font-family: "Source Code Pro";
+  padding: 20px;
+}
+#floppy {
+  background-color: #000000;
+  border-right: 5px solid #1ae41a;
+  height: 5px;
+  margin: 20px;
+  padding-right: 5px;
+  width: 150px;
 }
 .hidden {
   display: none;

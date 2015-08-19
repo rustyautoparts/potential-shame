@@ -1,6 +1,17 @@
 $(document).ready(function() {
   var num = getRandomInt(0, quotes.length - 1);
-  displayQuote(num);
+  //displayQuote(num);
+  //Following code for sytling ONLY
+  var longestQuote = quotes.reduce(function(lastQuote, thisQuote) {
+    if (thisQuote.quote.length > lastQuote.quote.length) {
+      return thisQuote;
+    }
+    return lastQuote;
+  });
+  $("#quote").html(longestQuote.quote);
+  $("#author").html(longestQuote.author);
+  $("#source").html(longestQuote.source);
+  //End styling test
 
   $("#new-quote").on("click", function() {
     num = getRandomInt(0, quotes.length - 1);
