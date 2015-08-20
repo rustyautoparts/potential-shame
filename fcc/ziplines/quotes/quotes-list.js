@@ -95,7 +95,7 @@ var quotes = [
     "source": ""
   },
   {
-    "quote": "\"Present-day computers are designed primarily to solve preformulated problems or to process data according to predetermined procedures. The course of the computation may be conditional upon results obtained during the computation, but all the alternatives must be foreseen in advance. &#x2026 The requirement for preformulation or predetermination is sometimes no great disadvantage. It is often said that programming for a computing machine forces one to think clearly, that it disciplines the thought process. If the user can think his problem through in advance, symbiotic association with a computing machine is not necessary.",
+    "quote": "Present-day computers are designed primarily to solve preformulated problems or to process data according to predetermined procedures. The course of the computation may be conditional upon results obtained during the computation, but all the alternatives must be foreseen in advance. &#x2026 The requirement for preformulation or predetermination is sometimes no great disadvantage. It is often said that programming for a computing machine forces one to think clearly, that it disciplines the thought process. If the user can think his problem through in advance, symbiotic association with a computing machine is not necessary.",
     "author": "J. C. R. Licklider",
     "source": "<em>Man-Computer Symbiosis</em>"
   },
@@ -195,7 +195,7 @@ var quotes = [
     "source": "Cited by Murali Chemuturi in <em>Mastering Software Quality Assurance: Best Practices, Tools and Technique for Software Developers</em>"
   },
   {
-    "quote": "Asking for efficiency and adaptability in the same program is like asking for a beautiful and modest wife. Although beauty and modesty have been known to occur in the same woman, we'll probably have to settle for one or the other. At least that's better than nzeither.",
+    "quote": "Asking for efficiency and adaptability in the same program is like asking for a beautiful and modest wife. Although beauty and modesty have been known to occur in the same woman, we'll probably have to settle for one or the other. At least that's better than neither.",
     "author": "Gerald M. Weinberg",
     "source": "<em>The Psychology of Computer Programming</em>"
   },
