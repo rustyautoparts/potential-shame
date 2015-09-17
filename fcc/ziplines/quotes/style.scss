@@ -1,0 +1,39 @@
+$bg-color: #000000;
+$hacker-orange: #ffa500;
+
+html {
+  height: 100%;
+}
+body {
+  background-color: $bg-color;
+  color: $hacker-orange;
+  font-family: "Source Code Pro", monospace;
+  min-height: 100%;
+}
+.main-container {
+  margin: 0 auto
+  max-width: 500px;
+}
+blockquote {
+  margin: 0;
+}
+cite {
+  border-top: 1px dashed $hacker-orange;
+  display: block;
+  font-style: normal;
+  padding-top: 10px;
+  text-align: right;
+}
+h1 {
+  background-color: $hacker-orange;
+  color: #000000;
+  font-weight: 700;
+  margin: 0px;
+  padding: 2px;
+}
+#author {
+  font-weight: bold;
+}
+.long-quote {
+  font-size: 17px;
+}
